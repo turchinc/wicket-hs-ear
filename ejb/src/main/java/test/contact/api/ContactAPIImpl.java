@@ -31,7 +31,7 @@ import org.hibernate.search.query.dsl.QueryBuilder;
 import test.contact.model.Contact;
 import test.contact.model.Contact.EntityField;
 
-/**
+/** 
  * A bean which manages Contact entities.
  */
 @Stateless
