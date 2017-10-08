@@ -15,7 +15,7 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<project  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.wildfly.quickstarts</groupId>
@@ -24,9 +24,7 @@
     </parent>
     <artifactId>wicket-ear</artifactId>
     <packaging>ear</packaging>
-    
     <name>WildFly Quickstart: wicket-ear - ear</name>
-
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
@@ -34,16 +32,13 @@
             <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
         </license>
     </licenses>
-
     <dependencies>
-
         <!-- EJB JAR module. -->
-            <dependency>
-                <groupId>org.wildfly.quickstarts</groupId>
-                <artifactId>wicket-ejb</artifactId>
-                <type>ejb</type>
-            </dependency>
-
+        <dependency>
+            <groupId>org.wildfly.quickstarts</groupId>
+            <artifactId>wicket-ejb</artifactId>
+            <type>ejb</type>
+        </dependency>
         <!-- WAR module. -->
         <dependency>
             <groupId>org.wildfly.quickstarts</groupId>
@@ -51,7 +46,6 @@
             <type>war</type>
         </dependency>
     </dependencies>
-
     <build>
         <finalName>${project.artifactId}</finalName>
         <plugins>
@@ -79,7 +73,6 @@
                     <fileNameMapping>no-version</fileNameMapping>
                 </configuration>
             </plugin>
-
             <!-- Enable WildFly plugin - only applicable for the EAR package. -->
             <plugin>
                 <groupId>org.wildfly.plugins</groupId>
@@ -89,8 +82,6 @@
                     <skip>false</skip>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
-
 </project>

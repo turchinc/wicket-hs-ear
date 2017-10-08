@@ -9,10 +9,8 @@
 	License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS 
 	OF ANY KIND, either express or implied. See the License for the specific 
 	language governing permissions and limitations under the License. -->
-<project
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
 	<parent>
 		<groupId>org.wildfly.quickstarts</groupId>
 		<artifactId>wicket-parent</artifactId>
@@ -21,7 +19,6 @@
 	<artifactId>wicket-ejb</artifactId>
 	<packaging>ejb</packaging>
 	<name>WildFly Quickstart: wicket-ear - ejb</name>
-
 	<licenses>
 		<license>
 			<name>Apache License, Version 2.0</name>
@@ -29,46 +26,46 @@
 			<url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
 		</license>
 	</licenses>
-
 	<dependencies>
-
 		<!-- "provided" scope used for API's included in JBoss WildFly. -->
-
 		<!-- Import the Common Annotations API (JSR-250). -->
 		<dependency>
 			<groupId>org.jboss.spec.javax.annotation</groupId>
 			<artifactId>jboss-annotations-api_1.2_spec</artifactId>
 			<scope>provided</scope>
 		</dependency>
-
 		<!-- Import the EJB API. -->
 		<dependency>
 			<groupId>org.jboss.spec.javax.ejb</groupId>
 			<artifactId>jboss-ejb-api_3.2_spec</artifactId>
 			<scope>provided</scope>
 		</dependency>
-
 		<!-- Import the JPA API. -->
 		<dependency>
 			<groupId>org.hibernate.javax.persistence</groupId>
 			<artifactId>hibernate-jpa-2.1-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-search-orm</artifactId>
-			<version>5.1.0.Final</version>
+			<version>5.6.3.Final</version>
 			<scope>provided</scope>
 		</dependency>
+		<!--
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-search-infinispan</artifactId>
 			<version>5.1.0.Final</version>
 			<scope>provided</scope>
 		</dependency>
+		-->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-search-elasticsearch</artifactId>
+			<version>5.6.3.Final</version>
+		</dependency>
 	</dependencies>
-
 	<build>
 		<finalName>${project.parent.artifactId}</finalName>
 		<plugins>
@@ -81,8 +78,27 @@
 					<ejbVersion>3.1</ejbVersion>
 				</configuration>
 			</plugin>
-
+			<plugin>
+				<groupId>de.jpdigital</groupId>
+				<artifactId>hibernate51-ddl-maven-plugin</artifactId>
+				<version>2.1.0-beta.1</version>
+				<configuration>
+					<dialects>
+						<param>MYSQL57_INNODB</param>
+					</dialects>
+					<packages>
+						<param>test.contact.model</param>
+					</packages>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>gen-ddl</goal>
+						</goals>
+						<phase>process-classes</phase>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
-
 </project>
